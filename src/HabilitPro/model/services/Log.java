@@ -1,4 +1,4 @@
 package HabilitPro.model.services;
 
-public class Historico {
+public class Log {
 }

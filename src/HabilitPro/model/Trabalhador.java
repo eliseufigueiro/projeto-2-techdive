@@ -1,4 +1,4 @@
 package HabilitPro.model;
 
-public class Trabalhadores {
+public class Trabalhador {
 }
