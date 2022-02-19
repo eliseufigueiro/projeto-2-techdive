@@ -1,7 +1,8 @@
 package HabilitPro.model.services;
 
-import HabilitPro.model.Modulos;
-import HabilitPro.model.Trabalhador;
+import HabilitPro.model.entidades.Modulos;
+import HabilitPro.model.entidades.Trabalhador;
+import HabilitPro.model.entidades.Usuarios;
 
 public class Avaliacao {
 
@@ -9,19 +10,26 @@ public class Avaliacao {
     private Integer idAvaliacao;
     private String anotacao;
     private Integer nota;
-    private Modulos modulos;
+    private Modulos modulo;
     private Trabalhador trabalhador;
+    private Usuarios usuario;
 
-    public Avaliacao(String anotacao, Integer nota, Modulos modulos, Trabalhador trabalhador) {
+    public Avaliacao(String anotacao, Modulos modulo, Trabalhador trabalhador, Usuarios usuario) {
         this.idAvaliacao = contadorIdAvaliacao++;
         this.anotacao = anotacao;
-        this.modulos = modulos;
+        this.modulo = modulo;
         this.trabalhador = trabalhador;
         if (nota < 1 || nota > 5) {
             throw new IllegalArgumentException("Valor da Nota inválido.");
         } else {
             this.nota = nota;
         }
+        //TODO: validar o perfil de usuário
+        /*if (usuario == ??) {
+            throw new IllegalArgumentException("Perfil de Usuário inválido.");
+        } else {
+            this.usuario = usuario;
+        }*/
     }
 
     @Override
@@ -30,7 +38,7 @@ public class Avaliacao {
                 "idAvaliacao=" + idAvaliacao +
                 ", anotacao='" + anotacao + '\'' +
                 ", nota=" + nota +
-                ", modulos=" + modulos +
+                ", modulos=" + modulo +
                 ", trabalhador=" + trabalhador +
                 '}';
     }

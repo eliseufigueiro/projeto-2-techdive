@@ -1,7 +1,8 @@
 package HabilitPro.view;
 
-import HabilitPro.model.Modulos;
-import HabilitPro.model.Trabalhador;
+import HabilitPro.model.entidades.Cidade;
+import HabilitPro.model.entidades.Empresa;
+import HabilitPro.model.entidades.Estado;
 import HabilitPro.model.services.Avaliacao;
 
 import java.util.ArrayList;
@@ -16,10 +17,19 @@ public class Debug {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
+        //Lista para testes
+        List<Empresa> empresas = new ArrayList<>();//DB para teste de empresas
         List<Avaliacao> avaliacaos = new ArrayList<>();//DB para teste de avaliações
 
-        //Debug avaliações
-        Avaliacao avaliacao = new Avaliacao("Alguma coisa qualquer", 5, new Modulos(), new Trabalhador());
-        System.out.println(avaliacao);
+        //Cadastro Estados e Cidades para testes
+        Estado estado = new Estado("Santa Catarina", "SC");
+        Cidade cidade = new Cidade("Palhoça", estado);
+        Cidade cidade1 = new Cidade("Florianópolis", estado);
+
+        //Teste TRILHA
+
+
+        System.out.println(cidade);
+        System.out.println(cidade1);
     }
 }

@@ -1,8 +1,8 @@
-package HabilitPro.controller;
+package HabilitPro.model.entidades;
 
-public class ControllerCadastro {
+public class Cadastros {
 
-//TODO: Essa validação deve ser feita no controller cadastro
+    //TODO: Essa validação deve ser feita no cadastros
         /*if (fgAtivofilial == Enum.FILIAL) {
             this.nomeFilial = nomeFilial;
         } else {

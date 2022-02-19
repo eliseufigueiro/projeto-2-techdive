@@ -1,4 +1,4 @@
-package HabilitPro.model;
+package HabilitPro.model.entidades;
 
 public class SegmentoEmpresa {
 

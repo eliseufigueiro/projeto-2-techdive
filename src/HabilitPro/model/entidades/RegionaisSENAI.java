@@ -1,18 +1,21 @@
-package HabilitPro.model;
+package HabilitPro.model.entidades;
 
 public class RegionaisSENAI {
 
     private String nomeRegional;
 
     public RegionaisSENAI(String nomeRegional) {
+
         this.nomeRegional = nomeRegional;
     }
 
     public String getNomeRegional() {
+
         return nomeRegional;
     }
 
     public void setNomeRegional(String nomeRegional) {
+
         this.nomeRegional = nomeRegional;
     }
 

@@ -1,11 +1,11 @@
-package HabilitPro.model;
-
-import HabilitPro.model.enums.Enum;
+package HabilitPro.model.entidades;
 
 import java.util.List;
 
 public class Empresa {
 
+    public static long contadorIdEmpresa = 0;//Contador para testes, simular chave auto incremento no banco de dados
+    private long idEmpresa;
     private String nomeEmpresa;
     private String cnpj;
     private String nomeFilial;
@@ -15,7 +15,19 @@ public class Empresa {
     private RegionaisSENAI regionaisSENAI;
     private List<Trilhas> trilhas;
 
+    public Empresa(String nomeEmpresa, String cnpj, SegmentoEmpresa segmentoEmpresa, Cidade cidade, Estado estado, RegionaisSENAI regionaisSENAI, List<Trilhas> trilhas) {
+        this.idEmpresa = ++contadorIdEmpresa;
+        this.nomeEmpresa = nomeEmpresa;
+        this.cnpj = cnpj;
+        this.segmentoEmpresa = segmentoEmpresa;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.regionaisSENAI = regionaisSENAI;
+        this.trilhas = trilhas;
+    }
+
     public Empresa(String nomeEmpresa, String cnpj, String nomeFilial, SegmentoEmpresa segmentoEmpresa, Cidade cidade, Estado estado, RegionaisSENAI regionaisSENAI, List<Trilhas> trilhas) {
+        this.idEmpresa = ++contadorIdEmpresa;
         this.nomeEmpresa = nomeEmpresa;
         this.cnpj = cnpj;
         this.nomeFilial = nomeFilial;
@@ -24,6 +36,11 @@ public class Empresa {
         this.estado = estado;
         this.regionaisSENAI = regionaisSENAI;
         this.trilhas = trilhas;
+    }
+
+    public long getIdEmpresa() {
+
+        return idEmpresa;
     }
 
     public String getNomeEmpresa() {
@@ -109,7 +126,8 @@ public class Empresa {
     @Override
     public String toString() {
         return "Empresa{" +
-                "nomeEmpresa='" + nomeEmpresa + '\'' +
+                "idEmpresa=" + idEmpresa +
+                ", nomeEmpresa='" + nomeEmpresa + '\'' +
                 ", cnpj='" + cnpj + '\'' +
                 ", nomeFilial='" + nomeFilial + '\'' +
                 ", segmentoEmpresa=" + segmentoEmpresa +
