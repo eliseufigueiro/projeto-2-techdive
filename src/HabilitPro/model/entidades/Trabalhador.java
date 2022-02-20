@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Trabalhador {
 
-    private static long contadorIdTtrabalhador = 0;//Apenas para teste, idAvaliacao será autoincremento no banco de dados
+    private static long contadorIdTtrabalhador = 0;//Apenas para teste, será autoencremento no banco de dados
     private long idTrabalhador;
     private String nomeTrabalhador;
     private String cpf;

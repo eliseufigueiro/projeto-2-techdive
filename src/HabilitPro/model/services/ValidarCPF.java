@@ -1,6 +1,6 @@
 package HabilitPro.model.services;
 
-public class isValidador {
+public class ValidarCPF {
 
 
 }

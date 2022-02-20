@@ -2,6 +2,7 @@ package HabilitPro.view;
 
 import HabilitPro.model.entidades.*;
 import HabilitPro.model.services.Avaliacao;
+import HabilitPro.model.services.ValidarCNPJ;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,5 +75,18 @@ public class Debug {
         trabalhador.setEmpresa(empresa1);
 
         System.out.println(trabalhador);
+
+        ValidarCNPJ isValidar = new ValidarCNPJ();
+
+        System.out.println(isValidar.isValidarEntradaCNPJ("30.290.317/0001-70"));
+        System.out.println(isValidar.isValidarEntradaCNPJ("11.111.111/1111-11"));
+
+        String CNPJ = "30.290.317/0001-70";
+        if (isValidar.isValidarEntradaCNPJ(CNPJ)) {
+            isValidar.isValidarCNPJ(CNPJ);
+            System.out.println(isValidar.isValidarCNPJ(CNPJ));
+            System.out.println(isValidar.isImprimirCNPJ("30290317000170"));
+        }
+
     }
 }
