@@ -1,7 +1,6 @@
 package HabilitPro.model.entidades;
 
-import HabilitPro.model.services.Avaliacao;
-import HabilitPro.model.services.Historico;
+import HabilitPro.model.services.*;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class Trabalhador {
     public Trabalhador(String nomeTrabalhador, String cpf, Empresa empresa, String setor, String funcao, List<Trilhas> trilhasList) {
         this.idTrabalhador = ++contadorIdTtrabalhador;
         this.nomeTrabalhador = nomeTrabalhador;
-        this.cpf = cpf;
+        validarDados(cpf);
         this.empresa = empresa;
         this.setor = setor;
         this.funcao = funcao;
@@ -138,6 +137,21 @@ public class Trabalhador {
     public void setHistoricoList(List<Historico> historicoList) {
 
         this.historicoList = historicoList;
+    }
+
+    public void validarDados(String cpf) {
+
+        ValidarCPF validarCPF = new ValidarCPF();
+
+        if (validarCPF.isValidarEntradaCPF(cpf)) {
+            if (validarCPF.isValidarCPF(cpf)) {
+                this.cpf = cpf;
+            } else {
+                throw new IllegalArgumentException("Erro: CPF inválido");
+            }
+        } else {
+            throw new IllegalArgumentException("Erro: CPF inválido");
+        }
     }
 
     //Método para setar Histórico

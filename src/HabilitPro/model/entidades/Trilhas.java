@@ -107,6 +107,16 @@ public class Trilhas {
         }
     }
 
+    public Usuarios getUsuario() {
+
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+
+        this.usuario = usuario;
+    }
+
     //Método para habilitar a Avaliação Geral da Trilha
     public void avaliacaoGeralTrilha() {
 

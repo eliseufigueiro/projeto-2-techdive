@@ -1,21 +1,15 @@
 package HabilitPro.view;
 
 import HabilitPro.model.entidades.*;
-import HabilitPro.model.services.Avaliacao;
-import HabilitPro.model.services.ValidarCNPJ;
-import HabilitPro.model.services.ValidarCPF;
-import HabilitPro.model.services.ValidarEmail;
+import HabilitPro.model.services.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Debug {
 
     public static void main(String[] args) {
 
-        //Classe apenas para alguns testes
+        //Classes apenas para alguns testes
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
@@ -49,12 +43,20 @@ public class Debug {
 
         //Cadastro Status
         StatusModulos statusModulos = new StatusModulos("Curso não iniciado", "Avaliação não deve estar disponível para aplicação.");
-        StatusModulos statusModulos1 = new StatusModulos("Em fase de avaliação", "Avaliação liberada para ser executada conforme prazo.");
+        StatusModulos statusModulos1 = new StatusModulos("Curso em andamento", "Avaliação não deve estar disponível para aplicação.");
+        StatusModulos statusModulos2 = new StatusModulos("Em fase de avaliação", "Avaliação liberada para ser executada conforme prazo.");
 
+        //Cadastro de Perfil
+        Perfil admin = new Perfil("Administrativo", "Realizar cadastros gerais, parametrizações e\n" +
+                "emissão de relatórios.");
+        Set<Perfil> perfilList = new HashSet<>();
+        perfilList.add(admin);
 
         //Cadastro Módulo
         Modulos modulo = new Modulos(trilhas, "TESTE", "Novo TESTE", statusModulos);
-        modulo.setStatus(statusModulos1);
+        modulo.setUsuario(new Usuarios("Admin", "008.964.559-63", "admin@admin.com", "Ola@2022", perfilList));
+        modulo.setStatus(statusModulos2);
+
 
         //Cadastro Trabalhador
         List<Trilhas> trilhasList = new ArrayList<>();
@@ -65,7 +67,7 @@ public class Debug {
         trilhas1.setModulos(modulosList);
         trilhasList.add(trilhas);
         trilhasList.add(trilhas1);
-        Trabalhador trabalhador = new Trabalhador("BOB", "78945612312", empresa, "Vendas", "Gerente", trilhasList);
+        Trabalhador trabalhador = new Trabalhador("BOB", "008.964.559-63", empresa, "Vendas", "Gerente", trilhasList);
 
         //Prints para teste relacionamento entre as Classes
         System.out.println(cidade);
@@ -88,21 +90,13 @@ public class Debug {
         System.out.println(isValidar.isValidarEntradaCNPJ("30.290.317/0001-70"));
         System.out.println(isValidar.isValidarEntradaCNPJ("11.111.111/1111-11"));
 
-        String CNPJ = "30.290.317/0001-70";
-        if (isValidar.isValidarEntradaCNPJ(CNPJ)) {
-            System.out.println(isValidar.isValidarCNPJ(CNPJ));
-            System.out.println(isValidar.isImprimirCNPJ("30290317000170"));
-        }
 
-        ValidarCPF isvalidarCPF = new ValidarCPF();
-        String CPF = "111.111.111-11";
-        if (isvalidarCPF.isValidarEntradaCPF(CPF)){
-            System.out.println(isvalidarCPF.isValidarCPF(CPF));
-            System.out.println(isvalidarCPF.isImprimirCPF("78945678912"));
-        }
-
-        ValidarEmail validarEmail = new ValidarEmail();
+        String CPF = "008.964.559-63";
         String email = "admin@admin.com";
-        System.out.println(validarEmail.isValidarEmail(email));
+        String senha = "OlaMundo@2022";
+
+        //Cadastro de Usuários
+        Usuarios usuarios = new Usuarios("Max", CPF, email, senha, perfilList);
+
     }
 }

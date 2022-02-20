@@ -17,6 +17,7 @@ public class Modulos {
     private OffsetDateTime inicioModulo;
     private OffsetDateTime finalModulo;
     private StatusModulos status;
+    private Usuarios usuario;
 
     public Modulos(Trilhas trilha, String nomeModulo, String habilidades, StatusModulos status) {
         this.idModulos = ++contadorIdModulos;
@@ -24,9 +25,6 @@ public class Modulos {
         this.nomeModulo = nomeModulo;
         this.habilidades = habilidades;
         this.status = status;
-        if (status.getStatus().equals("Curso em andamento")) {
-            this.inicioModulo = OffsetDateTime.now();
-        }
     }
 
     public Trilhas getTrilha() {
@@ -89,13 +87,34 @@ public class Modulos {
         return status;
     }
 
+    public Usuarios getUsuario() {
+
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+
+        this.usuario = usuario;
+    }
+
     public void setStatus(StatusModulos status) {
 
-        if (status.getStatus().equals("Em fase de avaliação")) {
-            prazoLimite = OffsetDateTime.now();
-            prazoLimite();
+        for (Perfil p : usuario.getPerfilList()) {
+            if (p.getNomePerfil().equals("Administrativo")) {
+                if (status.getStatus().equals("Curso em andamento")) {
+                    this.inicioModulo = OffsetDateTime.now();
+                }
+
+                if (status.getStatus().equals("Em fase de avaliação")) {
+                    finalModulo = OffsetDateTime.now();
+                    prazoLimite = OffsetDateTime.now();
+                    prazoLimite();
+                }
+                this.status = status;
+            } else {
+                throw new IllegalArgumentException("Somente Usuário com Perfil Administrativo, podem fazer alterações de Status");
+            }
         }
-        this.status = status;
     }
 
     public void prazoLimite() {
@@ -104,7 +123,7 @@ public class Modulos {
         while (dias > 0) {
             --dias;
             prazoLimite = prazoLimite.plusDays(1);
-            if (prazoLimite.getDayOfWeek() != DayOfWeek.SATURDAY && prazoLimite.getDayOfWeek() != DayOfWeek.SUNDAY){
+            if (prazoLimite.getDayOfWeek() == DayOfWeek.SATURDAY || prazoLimite.getDayOfWeek() == DayOfWeek.SUNDAY) {
                 ++dias;
             }
         }
