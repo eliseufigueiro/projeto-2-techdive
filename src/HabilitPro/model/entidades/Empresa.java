@@ -15,6 +15,16 @@ public class Empresa {
     private RegionaisSENAI regionaisSENAI;
     private List<Trilhas> trilhas;
 
+    public Empresa(String nomeEmpresa, String cnpj, SegmentoEmpresa segmentoEmpresa, Cidade cidade, Estado estado, RegionaisSENAI regionaisSENAI) {
+        this.idEmpresa = ++contadorIdEmpresa;
+        this.nomeEmpresa = nomeEmpresa;
+        this.cnpj = cnpj;
+        this.segmentoEmpresa = segmentoEmpresa;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.regionaisSENAI = regionaisSENAI;
+    }
+
     public Empresa(String nomeEmpresa, String cnpj, SegmentoEmpresa segmentoEmpresa, Cidade cidade, Estado estado, RegionaisSENAI regionaisSENAI, List<Trilhas> trilhas) {
         this.idEmpresa = ++contadorIdEmpresa;
         this.nomeEmpresa = nomeEmpresa;
@@ -24,6 +34,17 @@ public class Empresa {
         this.estado = estado;
         this.regionaisSENAI = regionaisSENAI;
         this.trilhas = trilhas;
+    }
+
+    public Empresa(String nomeEmpresa, String cnpj, String nomeFilial, SegmentoEmpresa segmentoEmpresa, Cidade cidade, Estado estado, RegionaisSENAI regionaisSENAI) {
+        this.idEmpresa = ++contadorIdEmpresa;
+        this.nomeEmpresa = nomeEmpresa;
+        this.cnpj = cnpj;
+        this.nomeFilial = nomeFilial;
+        this.segmentoEmpresa = segmentoEmpresa;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.regionaisSENAI = regionaisSENAI;
     }
 
     public Empresa(String nomeEmpresa, String cnpj, String nomeFilial, SegmentoEmpresa segmentoEmpresa, Cidade cidade, Estado estado, RegionaisSENAI regionaisSENAI, List<Trilhas> trilhas) {

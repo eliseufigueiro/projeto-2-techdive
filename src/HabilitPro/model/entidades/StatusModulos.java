@@ -2,11 +2,13 @@ package HabilitPro.model.entidades;
 
 public class StatusModulos {
 
-    private String idStatus;
+    public static long contadorIdStatus = 0;//Contador para testes, simular chave auto incremento no banco de dados
+    private long idStatus;
     private String status;
     private String descricao;
 
     public StatusModulos(String status, String descricao) {
+        this.idStatus = ++contadorIdStatus;
         this.status = status;
         this.descricao = descricao;
     }

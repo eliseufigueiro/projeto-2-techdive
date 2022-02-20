@@ -4,7 +4,6 @@ import HabilitPro.model.services.Avaliacao;
 
 import java.time.OffsetDateTime;
 
-
 public class Modulos {
 
     public static long contadorIdModulos = 0;//Contador para testes, simular chave auto incremento no banco de dados
@@ -100,7 +99,6 @@ public class Modulos {
     @Override
     public String toString() {
         return "Modulos{" +
-                "trilha=" + trilha +
                 ", nomeModulo='" + nomeModulo + '\'' +
                 ", habilidades='" + habilidades + '\'' +
                 ", tarefaDeValidacao=" + tarefaDeValidacao +

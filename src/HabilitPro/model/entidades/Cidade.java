@@ -19,18 +19,22 @@ public class Cidade {
     }
 
     public String getNomeCidade() {
+
         return nomeCidade;
     }
 
     public void setNomeCidade(String nomeCidade) {
+
         this.nomeCidade = nomeCidade;
     }
 
     public Estado getEstado() {
+
         return estado;
     }
 
     public void setEstado(Estado estado) {
+
         this.estado = estado;
     }
 
@@ -39,7 +43,6 @@ public class Cidade {
         return "Cidade{" +
                 "idCidade=" + idCidade +
                 ", nomeCidade='" + nomeCidade + '\'' +
-                ", estado=" + estado +
                 '}';
     }
 }

@@ -15,7 +15,7 @@ public class Trilhas {
     private List<Modulos> modulos = new ArrayList<>();
     private Integer satisfacaoGeral;
     private String anotacoes;
-    private OffsetDateTime anoAtual;
+    private OffsetDateTime anoAtual = OffsetDateTime.now();
 
     public Trilhas(Empresa empresa, Ocupacao ocupacao) {
         this.idTrilha = ++contadorIdTrilha;
@@ -23,6 +23,11 @@ public class Trilhas {
         this.ocupacao = ocupacao;
         setaNomeTrilha();
         setaApelidoTrilha();
+    }
+
+    public long getIdTrilha() {
+
+        return idTrilha;
     }
 
     public Empresa getEmpresa() {
@@ -55,11 +60,6 @@ public class Trilhas {
         return apelidoTrilha;
     }
 
-    public void setApelidoTrilha(String apelidoTrilha) {
-
-        this.apelidoTrilha = apelidoTrilha;
-    }
-
     public List<Modulos> getModulos() {
 
         return modulos;
@@ -77,7 +77,11 @@ public class Trilhas {
 
     public void setSatisfacaoGeral(Integer satisfacaoGeral) {
 
-        this.satisfacaoGeral = satisfacaoGeral;
+        if (satisfacaoGeral < 1 || satisfacaoGeral > 5) {
+            throw new IllegalArgumentException("Valor da Satisfação Geral inválido.");
+        } else {
+            this.satisfacaoGeral = satisfacaoGeral;
+        }
     }
 
     public String getAnotacoes() {
