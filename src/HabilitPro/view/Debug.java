@@ -3,6 +3,8 @@ package HabilitPro.view;
 import HabilitPro.model.entidades.*;
 import HabilitPro.model.services.Avaliacao;
 import HabilitPro.model.services.ValidarCNPJ;
+import HabilitPro.model.services.ValidarCPF;
+import HabilitPro.model.services.ValidarEmail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,10 +85,19 @@ public class Debug {
 
         String CNPJ = "30.290.317/0001-70";
         if (isValidar.isValidarEntradaCNPJ(CNPJ)) {
-            isValidar.isValidarCNPJ(CNPJ);
             System.out.println(isValidar.isValidarCNPJ(CNPJ));
             System.out.println(isValidar.isImprimirCNPJ("30290317000170"));
         }
 
+        ValidarCPF isvalidarCPF = new ValidarCPF();
+        String CPF = "111.111.111-11";
+        if (isvalidarCPF.isValidarEntradaCPF(CPF)){
+            System.out.println(isvalidarCPF.isValidarCPF(CPF));
+            System.out.println(isvalidarCPF.isImprimirCPF("78945678912"));
+        }
+
+        ValidarEmail validarEmail = new ValidarEmail();
+        String email = "admin@admin.com";
+        System.out.println(validarEmail.isValidarEmail(email));
     }
 }

@@ -10,8 +10,8 @@ public class ValidarCNPJ {
 
         String r = "(^\\d{2}\\.\\d{3}\\.\\d{3}\\/\\d{4}\\-\\d{2}$)";
         Pattern p = Pattern.compile(r);
-        Matcher c = p.matcher(CNPJ);
-        return c.matches();
+        Matcher m = p.matcher(CNPJ);
+        return m.matches();
     }
 
     public boolean isValidarCNPJ(String CNPJ) {
