@@ -15,6 +15,7 @@ public class Debug {
 
     public static void main(String[] args) {
 
+        //Classe apenas para alguns testes
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
@@ -48,9 +49,12 @@ public class Debug {
 
         //Cadastro Status
         StatusModulos statusModulos = new StatusModulos("Curso não iniciado", "Avaliação não deve estar disponível para aplicação.");
+        StatusModulos statusModulos1 = new StatusModulos("Em fase de avaliação", "Avaliação liberada para ser executada conforme prazo.");
+
 
         //Cadastro Módulo
         Modulos modulo = new Modulos(trilhas, "TESTE", "Novo TESTE", statusModulos);
+        modulo.setStatus(statusModulos1);
 
         //Cadastro Trabalhador
         List<Trilhas> trilhasList = new ArrayList<>();
@@ -74,6 +78,7 @@ public class Debug {
         System.out.println(trilhas);//Imprime trilha após add satisfação geral 5
         System.out.println(trabalhador);
 
+        System.out.println(modulo.getPrazoLimite());
         trabalhador.setEmpresa(empresa1);
 
         System.out.println(trabalhador);

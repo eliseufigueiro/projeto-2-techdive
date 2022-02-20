@@ -1,5 +1,7 @@
 package HabilitPro.model.entidades;
 
+import HabilitPro.model.enums.Enum;
+
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,16 @@ public class Trilhas {
     private List<Modulos> modulos = new ArrayList<>();
     private Integer satisfacaoGeral;
     private String anotacoes;
+    private Enum avaliacaoGeral = Enum.NAO;
+    private Usuarios usuario;
     private OffsetDateTime anoAtual = OffsetDateTime.now();
+
+    public Trilhas(Ocupacao ocupacao) {
+        this.idTrilha = ++contadorIdTrilha;
+        this.ocupacao = ocupacao;
+        setaNomeTrilha();
+        setaApelidoTrilha();
+    }
 
     public Trilhas(Empresa empresa, Ocupacao ocupacao) {
         this.idTrilha = ++contadorIdTrilha;
@@ -91,7 +102,9 @@ public class Trilhas {
 
     public void setAnotacoes(String anotacoes) {
 
-        this.anotacoes = anotacoes;
+        if (avaliacaoGeral == Enum.SIM && usuario.getPerfilList().equals("Operacional")) {
+            this.anotacoes = anotacoes;
+        }
     }
 
     //Método para habilitar a Avaliação Geral da Trilha
@@ -105,7 +118,7 @@ public class Trilhas {
         this.nomeTrilha = ocupacao.getOcupacao() + empresa.getNomeEmpresa() + ocupacao.getIdOcupacao() + empresa.getIdEmpresa() + anoAtual.getYear();
     }
 
-    public void setaApelidoTrilha(){
+    public void setaApelidoTrilha() {
 
         this.apelidoTrilha = ocupacao.getOcupacao() + ocupacao.getIdOcupacao() + empresa.getIdEmpresa();
     }

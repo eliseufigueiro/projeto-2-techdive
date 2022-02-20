@@ -2,6 +2,7 @@ package HabilitPro.model.entidades;
 
 import HabilitPro.model.services.Avaliacao;
 
+import java.time.DayOfWeek;
 import java.time.OffsetDateTime;
 
 public class Modulos {
@@ -22,8 +23,10 @@ public class Modulos {
         this.trilha = trilha;
         this.nomeModulo = nomeModulo;
         this.habilidades = habilidades;
-        this.inicioModulo = OffsetDateTime.now();
         this.status = status;
+        if (status.getStatus().equals("Curso em andamento")) {
+            this.inicioModulo = OffsetDateTime.now();
+        }
     }
 
     public Trilhas getTrilha() {
@@ -66,11 +69,6 @@ public class Modulos {
         return prazoLimite;
     }
 
-    public void setPrazoLimite(OffsetDateTime prazoLimite) {
-
-        this.prazoLimite = prazoLimite;
-    }
-
     public OffsetDateTime getInicioModulo() {
 
         return inicioModulo;
@@ -93,7 +91,23 @@ public class Modulos {
 
     public void setStatus(StatusModulos status) {
 
+        if (status.getStatus().equals("Em fase de avaliação")) {
+            prazoLimite = OffsetDateTime.now();
+            prazoLimite();
+        }
         this.status = status;
+    }
+
+    public void prazoLimite() {
+
+        Integer dias = 10;
+        while (dias > 0) {
+            --dias;
+            prazoLimite = prazoLimite.plusDays(1);
+            if (prazoLimite.getDayOfWeek() != DayOfWeek.SATURDAY && prazoLimite.getDayOfWeek() != DayOfWeek.SUNDAY){
+                ++dias;
+            }
+        }
     }
 
     @Override

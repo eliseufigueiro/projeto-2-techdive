@@ -20,4 +20,60 @@ public class Usuarios {
         this.senha = senha;
         this.perfilList = perfilList;
     }
+
+    public long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public List<Perfil> getPerfilList() {
+        return perfilList;
+    }
+
+    public void setPerfilList(List<Perfil> perfilList) {
+        this.perfilList = perfilList;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuarios{" +
+                "idUsuario=" + idUsuario +
+                ", nomeUsuario='" + nomeUsuario + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", perfilList=" + perfilList +
+                '}';
+    }
 }

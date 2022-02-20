@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 
 public class ValidarCPF {
 
+    /*Não é preciso utilizar classe ou interfaces para validação de cpf utilizando Hibernate.
+     apenas a anotação @CPF pois já possui implementação de validação.*/
+
     public boolean isValidarEntradaCPF(String CPF) {
 
         String r = "(^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$)";
